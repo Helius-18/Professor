@@ -29,7 +29,11 @@ if prompt := st.chat_input("Ask something..."):
             full_response = ""
 
             try:
-                for chunk in agent.stream(prompt):
+                response = agent.run({
+                    "input": prompt,
+                    "chat_history": st.session_state.history
+                })
+                for chunk in response:
                     # Each `chunk` is a string or dict depending on the agent
                     token = chunk.get("output", "") if isinstance(chunk, dict) else str(chunk)
                     full_response += token
