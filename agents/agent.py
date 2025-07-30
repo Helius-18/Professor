@@ -1,7 +1,7 @@
-from langchain.agents import initialize_agent, AgentType
 from tools.weather_tool import weather_tool
-from tools.general_tool import general_tool
 from models.llama_model import get_llm
+from langchain.agents import initialize_agent
+from langchain.agents.agent_types import AgentType
 
 def get_agent():
     llm = get_llm()
@@ -12,6 +12,5 @@ def get_agent():
         agent=AgentType.CONVERSATIONAL_REACT_DESCRIPTION,
         verbose=True,
         handle_parsing_errors=True,
-        stream_output=True
     )
     return agent

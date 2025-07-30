@@ -22,22 +22,23 @@ if prompt := st.chat_input("Ask something..."):
     with st.chat_message("user"):
         st.markdown(prompt)
 
-    # Assistant (streamed) response
+    # Assistant response
     with st.chat_message("assistant"):
         with st.spinner("Thinking..."):
             placeholder = st.empty()
             full_response = ""
-
             try:
-                response = agent.run({
+                # Use invoke instead of run (no streaming)
+                response = agent.invoke({
                     "input": prompt,
                     "chat_history": st.session_state.history
                 })
-                for chunk in response:
-                    # Each `chunk` is a string or dict depending on the agent
-                    token = chunk.get("output", "") if isinstance(chunk, dict) else str(chunk)
-                    full_response += token
-                    placeholder.markdown(full_response)
+                # If response is a dict with 'output', extract it
+                if isinstance(response, dict) and "output" in response:
+                    full_response = response["output"]
+                else:
+                    full_response = str(response)
+                placeholder.markdown(full_response)
             except Exception as e:
                 full_response = f"Error: {e}"
                 placeholder.markdown(full_response)
