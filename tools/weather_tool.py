@@ -15,7 +15,7 @@ def get_weather(location: str) -> str:
         return f"Failed to get weather data: {e}"
 
 weather_tool = Tool(
-    name="WeatherInfo",
+    name="Weather",
     func=get_weather,
-    description="Get the current weather for a city like 'Paris' or 'London'."
+    description="This Tool provides current weather information for a specified city. Input should be a city name like 'Paris' or 'London'."
 )
