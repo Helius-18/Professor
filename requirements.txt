@@ -1,6 +1,6 @@
 streamlit
-langchain
-langchain-core
-langchain-ollama
-requests
+faiss-cpu
+numpy
 langgraph
+langchain
+openai
