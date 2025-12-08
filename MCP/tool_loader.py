@@ -7,7 +7,7 @@ from typing import Any, Callable, Dict, List
 from fastmcp import FastMCP
 
 from models import Tool, Connection, get_session
-from tool_executor import DBExecutor, APIExecutor
+from Professor.Agent.tool_executor import DBExecutor, APIExecutor
 
 
 def _parse_content(tool: Tool) -> Dict[str, Any]:

@@ -7,7 +7,7 @@ from typing import Any, Dict, List
 import httpx
 from sqlalchemy import create_engine, text
 
-from db.models import Connection
+from models import Connection
 
 
 class DBExecutor:
