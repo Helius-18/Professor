@@ -1,12 +1,8 @@
 SQLAlchemy
-# Use a newer FastAPI to be compatible with fastmcp
 fastapi
 uvicorn
-# httpx must be recent for fastmcp and other libs
 httpx>=0.28.1
-# fastmcp requires newer FastAPI/httpx; set a minimum
 fastmcp
-# LangGraph / LangChain helpers (min versions)
 langgraph
 langchain-openai
 langchain-core
