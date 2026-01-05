@@ -7,7 +7,8 @@ from agno.agent.agent import Agent
 from agno.models.openai import OpenAIChat
 from agno.tools.yfinance import YFinanceTools
 
-from .tools.backend import get_weather
+from .tools.backend import get_table_columns, get_tables, execute_query
+# from .tools.DB_tools import get_table_columns, get_tables, execute_query, get_foreign_keys
 from .tools.frontend import add_proverb, set_theme_color
 
 agent = Agent(
@@ -15,11 +16,15 @@ agent = Agent(
     tools=[
         # Example of backend tools, defined and handled in your agno agent
         YFinanceTools(),
-        get_weather,
+        get_tables,
+        get_table_columns,
+        execute_query,
+        # get_foreign_keys,
         # Example of frontend tools, handled in the frontend Next.js app
         add_proverb,
         set_theme_color,
     ],
-    description="You are an demonstrative agent for Agno and CopilotKit's integration.",
+    description="An agent that helps property managers manage their properties, tenants, leases, and payments.",
     instructions="Format your response using markdown and use tables to display data where possible.",
+    debug_mode=True,
 )
