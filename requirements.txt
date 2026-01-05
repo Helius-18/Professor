@@ -1,8 +1,0 @@
-SQLAlchemy
-fastapi
-uvicorn
-httpx>=0.28.1
-fastmcp
-langgraph
-langchain-openai
-langchain-core
